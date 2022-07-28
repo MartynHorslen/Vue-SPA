@@ -1,6 +1,7 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
+<script>
+export default {
 
+}
 </script>
 
 <template>
@@ -20,7 +21,6 @@ import { RouterLink, RouterView } from "vue-router";
               <router-link to="/" class="btn">News</router-link>
               <RouterLink to="/teams">Teams</RouterLink>
               <RouterLink to="/table">Table</RouterLink>
-              <RouterLink to="/competitions">Competitions</RouterLink>
               <RouterLink to="/fixtures">Fixtures</RouterLink>
               <RouterLink to="/results">Results</RouterLink>
               <RouterLink to="/transfers">Transfers</RouterLink>
@@ -73,6 +73,7 @@ nav {
   flex-wrap: wrap;
   gap: 10px 0;
   justify-content: center;
+  margin-top: 0.5rem;
 }
 .navbar-collapse a {
   flex: 1 1 150px;
@@ -106,5 +107,24 @@ nav a:first-of-type {
   .navbar-brand {
     display: none;
   }
+  .navbar-collapse.show, .collapsing {
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+  .navbar-collapse a {
+    flex: 1 1 90px;
+    text-align: center;
+    padding-left: 1rem;
+    border: 1px solid transparent;
+  }
+
+  .navbar-collapse a:hover {
+    border-color: orange;
+  }
+}
+
+@media (min-width: 576px) {
+  
 }
 </style>

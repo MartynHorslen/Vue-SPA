@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is the fixtures page</h1>
+    <h1>Fixtures</h1>
   </div>
 </template>
 

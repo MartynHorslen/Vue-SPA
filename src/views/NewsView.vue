@@ -6,10 +6,6 @@ let message = ref("hello world");
 
 <template>
   <main>
-
-    <p>{{ message }}</p>
-    <p>
-      <input type="text" v-model="message" />
-    </p>
+    <h1>News</h1>
   </main>
 </template>

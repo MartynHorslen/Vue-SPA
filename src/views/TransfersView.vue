@@ -1,6 +1,10 @@
+<script setup>
+
+</script>
+
 <template>
   <div class="about">
-    <h1>This is the transfers page</h1>
+    <h1>Transfers</h1>
   </div>
 </template>
 

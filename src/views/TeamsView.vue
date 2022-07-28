@@ -1,6 +1,13 @@
+<script>
+export default {
+  
+}
+</script>
+
 <template>
   <div class="about">
-    <h1>This is the teams page</h1>
+    <h1>Teams</h1>
+    <p>test</p>
   </div>
 </template>
 

@@ -26,14 +26,6 @@ const router = createRouter({
       component: () => import("../views/TableView.vue"),
     },
     {
-      path: "/competitions",
-      name: "Competitions",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/CompetitionsView.vue"),
-    },
-    {
       path: "/fixtures",
       name: "Fixtures",
       // route level code-splitting

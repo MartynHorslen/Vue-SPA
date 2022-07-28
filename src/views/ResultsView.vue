@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is the results page</h1>
+    <h1>Results</h1>
   </div>
 </template>
 
