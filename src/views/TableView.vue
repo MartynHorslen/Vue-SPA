@@ -10,29 +10,44 @@ export default {
     return {
       tableData: [],
       season: 2022,
-      loading: true
+      loading: true,
+      seasonData: []
     }
   },
 
   methods: {
-    getTableData() {
-      this.loading = true;
+    // Move this to app.vue so it's accessible for all pages to make API requests.
+    async requestData(url) {
       const options = {
         method: 'GET',
-        url: 'https://api-football-standings.azharimm.site/leagues/eng.1/standings?season=' + this.season
+        url: url
       };
 
-      axios.request(options).then((response) => {
+      return axios.request(options);
+    },
+
+    async getTableData() {
+      this.loading = true;
+      let url = 'https://api-football-standings.azharimm.site/leagues/eng.1/standings?season=' + this.season;
+      let response = await this.requestData(url);
+      if (response) {
         this.tableData = response.data.data.standings;
         this.loading = false;
-      }).catch(function (error) {
-        console.error(error);
-      });
+      }   
     },
+
+    async getSeasonData() {
+      let url = 'https://api-football-standings.azharimm.site/leagues/eng.1/seasons';
+      let response = await this.requestData(url);
+      if (response) {
+        this.seasonData = response.data.data.seasons;
+      }      
+    }
   },
 
   mounted () {
     this.getTableData();
+    this.getSeasonData();
   }
 }
 </script>
@@ -40,10 +55,7 @@ export default {
 <template>
   <div class="form-group py-2 d-flex justify-content-end">
     <select name="season" id="season" class="form-select" v-model="season" @change="getTableData">
-      <option value="2022">2022 - 2023</option>
-      <option value="2021">2021 - 2022</option>
-      <option value="2020">2020 - 2021</option>
-      <option value="2019">2019 - 2020</option>
+      <option v-for="season, index in seasonData" :value="season.year">{{ season.year }} - {{ season.year + 1}}</option>
     </select>
   </div>
   <league-table :tableData="tableData" :loading="loading" />
