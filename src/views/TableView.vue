@@ -18,12 +18,8 @@ export default {
     getTableData() {
       this.loading = true;
       const options = {
-      method: 'GET',
-      url: 'https://api-football-standings.azharimm.site/leagues/eng.1/standings?season=' + this.season,
-      //   headers: {
-      //     'X-RapidAPI-Key': '1444ece9f5msh125fb1f7cc0f8c5p1d2f3bjsn40e719f58738',
-      //     'X-RapidAPI-Host': 'football98.p.rapidapi.com'
-        // }
+        method: 'GET',
+        url: 'https://api-football-standings.azharimm.site/leagues/eng.1/standings?season=' + this.season
       };
 
       axios.request(options).then((response) => {

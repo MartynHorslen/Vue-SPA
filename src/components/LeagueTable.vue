@@ -30,7 +30,7 @@
       </thead>
       <tbody>
         <tr v-if="loading">
-          <td colspan="10" class="text-start">Table Loading...</td>
+          <td colspan="10" class="text-start">Loading...</td>
         </tr>
         <tr v-if="! loading" v-for="team, index in tableData" key="index">
           <th scope="row">{{ team.stats[8].displayValue }}</th>
@@ -53,5 +53,18 @@
   .team-logo {
     width:30px;
     height: 30px;
+  }
+  .table {
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.15);
+  }
+  tbody tr:nth-child(5){
+    border-bottom: 1px solid darkslategrey;
+    border-top: 1px solid darkslategrey;
+  }
+  tbody tr:nth-child(17){
+    border-bottom: 1px solid darkslategrey;
+  }
+  .table>:not(caption)>*>* {
+    border-bottom-width: 0;
   }
 </style>

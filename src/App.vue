@@ -98,7 +98,9 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
-
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255,255,255,.5);
+}
 .navbar-toggler:focus {
   box-shadow: 0 0 0 0.1rem;
 }
