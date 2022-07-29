@@ -3,6 +3,9 @@
     props: {
       tableData: {
         type: Object
+      },
+      loading: {
+        type: Boolean
       }
     }
   }
@@ -26,7 +29,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="team, index in tableData" key="index">
+        <tr v-if="loading">
+          <td colspan="10" class="text-start">Table Loading...</td>
+        </tr>
+        <tr v-if="! loading" v-for="team, index in tableData" key="index">
           <th scope="row">{{ team.stats[8].displayValue }}</th>
           <td class="d-flex" nowrap><img :src="team.team.logos[0].href" class="team-logo" /><span class="flex-grow-1">{{ team.team.shortDisplayName }}</span></td>
           <td>{{ team.stats[3].displayValue }}</td>
@@ -44,8 +50,8 @@
 </template>
 
 <style>
-.team-logo {
-  width:30px;
-  height: 30px;
-}
+  .team-logo {
+    width:30px;
+    height: 30px;
+  }
 </style>
