@@ -1,6 +1,7 @@
 <script>
 import LeagueTable from "../components/LeagueTable.vue";
-import axios from 'axios';
+import { requestData } from '../api.js';
+
 export default {
   components: {
     'league-table': LeagueTable
@@ -16,20 +17,10 @@ export default {
   },
 
   methods: {
-    // Move this to app.vue so it's accessible for all pages to make API requests.
-    async requestData(url) {
-      const options = {
-        method: 'GET',
-        url: url
-      };
-
-      return axios.request(options);
-    },
-
     async getTableData() {
       this.loading = true;
       let url = 'https://api-football-standings.azharimm.site/leagues/eng.1/standings?season=' + this.season;
-      let response = await this.requestData(url);
+      let response = await requestData(url);
       if (response) {
         this.tableData = response.data.data.standings;
         this.loading = false;
@@ -38,7 +29,7 @@ export default {
 
     async getSeasonData() {
       let url = 'https://api-football-standings.azharimm.site/leagues/eng.1/seasons';
-      let response = await this.requestData(url);
+      let response = await requestData(url);
       if (response) {
         this.seasonData = response.data.data.seasons;
       }      
@@ -53,7 +44,7 @@ export default {
 </script>
 
 <template>
-  <div class="form-group py-2 d-flex justify-content-end">
+  <div class="form-group py-2 container-fluid d-flex justify-content-end">
     <select name="season" id="season" class="form-select" v-model="season" @change="getTableData">
       <option v-for="season, index in seasonData" :value="season.year">{{ season.year }} - {{ season.year + 1}}</option>
     </select>

@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <div class="table-responsive">
+  <div class="table-responsive league">
     <table class="table table-hover table-striped text-center">
       <thead>
         <tr>
@@ -57,14 +57,14 @@
   .table {
     --bs-table-hover-bg: rgba(0, 0, 0, 0.15);
   }
-  tbody tr:nth-child(5){
+  .league tbody tr:nth-child(5){
     border-bottom: 1px solid darkslategrey;
     border-top: 1px solid darkslategrey;
   }
-  tbody tr:nth-child(17){
+  .league tbody tr:nth-child(17){
     border-bottom: 1px solid darkslategrey;
   }
-  .table>:not(caption)>*>* {
+  .league .table>:not(caption)>*>* {
     border-bottom-width: 0;
   }
 </style>
