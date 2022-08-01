@@ -1,15 +1,26 @@
-<template>
-  <div class="about">
-    <h1>Results</h1>
-  </div>
-</template>
+<script>
+import Matches from "../components/Matches.vue";
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+export default {  
+  components: {
+    'matches': Matches
+  },
+
+  data() {
+    return {
+      requestType: 'results'
+    }
+  },
+
+  methods: {
+    
+  },
+
+  async mounted() {
   }
 }
-</style>
+</script>
+
+<template>
+  <matches :requestType="requestType" />
+</template>
