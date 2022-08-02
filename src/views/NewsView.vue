@@ -21,13 +21,20 @@ export default {
       let response = await requestData(url, headers);
       if (response.data) {
         this.newsData = response.data;
+        localStorage.newsData = JSON.stringify(response.data);
         this.loading = false;
       }    
     }
   },
 
   mounted () {
-    this.getNewsData();
+    if (localStorage.newsData) {
+      this.newsData = JSON.parse(localStorage.newsData);
+      this.loading = false;
+    } else {
+      this.getNewsData();
+    }
+    
   }
 }
 </script>

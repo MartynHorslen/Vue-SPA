@@ -23,6 +23,8 @@ export default {
       let response = await requestData(url);
       if (response) {
         this.tableData = response.data.data.standings;
+        localStorage.tableData = JSON.stringify(response.data.data.standings);
+        localStorage.season = this.season;
         this.loading = false;
       }   
     },
@@ -32,13 +34,21 @@ export default {
       let response = await requestData(url);
       if (response) {
         this.seasonData = response.data.data.seasons;
+        localStorage.seasonData = JSON.stringify(response.data.data.seasons);
       }      
     }
   },
 
   mounted () {
-    this.getTableData();
-    this.getSeasonData();
+    if (localStorage.tableData && localStorage.seasonData) {
+      this.tableData = JSON.parse(localStorage.tableData);
+      this.seasonData = JSON.parse(localStorage.seasonData);
+      this.season = localStorage.season;
+      this.loading = false;
+    } else {
+      this.getTableData();
+      this.getSeasonData();
+    }
   }
 }
 </script>

@@ -31,6 +31,7 @@ export default {
             let response = await requestData(url, headers);
             if (response.data) {
                 this.requestData = response.data;
+                localStorage[this.requestType] = JSON.stringify(response.data);
                 this.loading = false;
             } else {
                 console.log('There was an API error. Please check request quata.');
@@ -52,9 +53,14 @@ export default {
     },
 
     async mounted() {
-        await this.getRequestData();
-        this.getUniqueDates();
-        this.dataCheck();
+      if (localStorage[this.requestType]) {
+        this.requestData = JSON.parse(localStorage[this.requestType]);
+        this.loading = false;
+      } else {
+          await this.getRequestData();
+      }
+      this.getUniqueDates();
+      this.dataCheck();
     }
 }
 </script>
