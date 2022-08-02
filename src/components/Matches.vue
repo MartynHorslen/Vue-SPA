@@ -66,14 +66,14 @@ export default {
 </script>
 
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid mt-3 fixtures">
       <p v-if="loading">Loading...</p>
       <p v-if="errors">Server error. {{ errors }}</p>
       <p v-if="! hasData && ! loading">There is no data yet.</p>
     <div v-for="matches, key, index in requestData[0]">
       <h2>Game Week {{ key.replace( /^\D+/g, '') }}</h2>
-      <div v-for="date in dates">
-      <h4 v-if="matches.find(element => element.MatchDay == date)" v-text="moment(date, 'DD/MM/YYYY').format('dddd, LL')"></h4>
+      <div class="mb-3" v-for="date in dates">
+      <h4 v-if="matches.find(element => element.MatchDay == date)" v-text="moment(date, 'DD/MM/YYYY').format('dddd, LL')" class="text-center"></h4>
       <div v-if="matches.find(element => element.MatchDay == date)" class="table-responsive">
         <table class="table table-sm table-hover table-striped text-center">
           <tbody>
@@ -90,5 +90,12 @@ export default {
 <style>
 .date {
   font-size: 14px;
+}
+@media (min-width: 992px) {
+  .fixtures {
+    flex-direction: row;
+    justify-content: center;
+    gap:60px;
+  }
 }
 </style>

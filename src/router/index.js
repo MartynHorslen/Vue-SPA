@@ -10,14 +10,6 @@ const router = createRouter({
       component: NewsView,
     },
     {
-      path: "/teams",
-      name: "Teams",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/TeamsView.vue"),
-    },
-    {
       path: "/table",
       name: "Table",
       // route level code-splitting
@@ -41,16 +33,8 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/ResultsView.vue"),
     },
-    {
-      path: "/transfers",
-      name: "Transfers",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/TransfersView.vue"),
-    },
   ],
-  linkActiveClass: "d-none",
+  linkActiveClass: "nav-active",
   linkExactActiveClass: ""
 });
 

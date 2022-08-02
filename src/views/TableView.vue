@@ -66,11 +66,17 @@ export default {
 .form-select, option {
   width: 140px;
 }
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+@media (min-width: 992px) {
+  .league {
+    max-width: 990px;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+  }
+  .form-group {
+    max-width: 990px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 </style>

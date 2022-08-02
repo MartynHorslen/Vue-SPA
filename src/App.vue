@@ -6,21 +6,17 @@ export default {
 
 <template>
 <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1200px-Premier_League_Logo.svg.png" alt="Premier League"></div>
-<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-purple mt-2">
+<nav class="navbar sticky-top navbar-expand-md navbar-dark bg-purple mt-2">
   <div class="container-fluid">
     <h1 class="navbar-brand" href="#">{{ $route.name }}</h1>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- <ul class="navbar-nav mb-2 mb-lg-0"> -->
-        <router-link to="/" class="btn">News</router-link>
-        <RouterLink to="/teams">Teams</RouterLink>
+        <router-link to="/">News</router-link>
         <RouterLink to="/table">Table</RouterLink>
         <RouterLink to="/fixtures">Fixtures</RouterLink>
         <RouterLink to="/results">Results</RouterLink>
-        <RouterLink to="/transfers">Transfers</RouterLink>
-      <!-- </ul> -->
     </div>
   </div>
 </nav>
@@ -41,11 +37,12 @@ header {
   align-items: center;
 }
 .logo {
-  width: 60%;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 .logo img {
-  width: 100%;
+  width: 300px;
   height: auto;
 }
 
@@ -55,6 +52,9 @@ nav {
   text-align: center;
 }
 
+.nav-active {
+  display:none;
+}
 .navbar-brand {
   font-size: 1.5rem;
   margin-bottom: 0;
@@ -71,11 +71,11 @@ nav {
   margin-top: 0.5rem;
 }
 .navbar-collapse a {
-  flex: 1 1 150px;
+  flex: 1;
   color: #fff;
   /* border: 1px solid white; */
   border-radius: 5px;
-  text-align: left;
+  text-align: center;
   padding-left: 0;
 }
 
@@ -90,9 +90,6 @@ nav a {
   text-decoration: none;
 }
 
-nav a:first-of-type {
-  border: 0;
-}
 .navbar-dark .navbar-toggler {
   border-color: rgba(255,255,255,.5);
 }
@@ -101,16 +98,14 @@ nav a:first-of-type {
 }
 
 @media (min-width: 576px) {
-  .navbar-brand {
-    display: none;
-  }
   .navbar-collapse.show, .collapsing {
     flex-wrap: nowrap;
     justify-content: center;
     margin-bottom: 0.5rem;
   }
   .navbar-collapse a {
-    flex: 1 1 90px;
+    flex: 1;
+    gap: 15px;
     text-align: center;
     padding-left: 1rem;
     border: 1px solid transparent;
@@ -121,7 +116,22 @@ nav a:first-of-type {
   }
 }
 
-@media (min-width: 576px) {
-  
+@media (min-width: 768px) {
+  .navbar-brand {
+    display: none;
+  }
+  .navbar-collapse {
+    gap: 15px;
+  }
+
+  nav .navbar-collapse a.nav-active {
+    display: block;
+    color: orange;
+    border: 1px solid;
+    border-color: orange;
+  }
+  nav .navbar-collapse a.nav-active:hover, nav .navbar-collapse a:hover {
+    background-color: rgb(95, 63, 122);
+  }
 }
 </style>

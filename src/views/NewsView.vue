@@ -46,9 +46,9 @@ export default {
       <p v-if="errors">Server error. {{ errors }}</p>
       <a :href="news.NewsLink" target="_blank" v-for="news in newsData" class="card d-flex flex-row mb-1 text-decoration-none text-black">
         <div class="img-container"><img :src="news.Image" class="card-img" :alt="news.Title"></div>
-        <div class="card-body d-flex flex-column justify-content-center">
-          <p class="card-text mb-2" v-text="news.Title.length > 90 ? news.Title.slice(0, 90).trim() + '...' : news.Title"></p>
-          <span class="published">{{ news.PublisherName }} - {{ news.PublisherDate }}</span>
+        <div class="card-body justify-content-center">
+          <p class="card-text mb-2" v-text="news.Title.length > 72 ? news.Title.slice(0, 72).trim() + '...' : news.Title"></p>
+          <p class="published">{{ news.PublisherName.length > 19 ? news.PublisherName.slice(0, 19).trim() + '...' : news.PublisherName}} - {{ news.PublisherDate }}</p>
         </div>
       </a>
     </div>
@@ -58,6 +58,7 @@ export default {
 <style>
 .card {
   height: 140px;
+  border: 1px solid lightgray;
 }
 .card:hover {
   filter: brightness(0.85);
@@ -68,6 +69,9 @@ export default {
 
 .card-body {
   flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-img {
@@ -77,7 +81,35 @@ export default {
 
 
 .published {
-  font-size: 12px;
+  font-size: 11px;
   align-self: end;
+  float: right;
+}
+@media (min-width: 576px) {
+  .published {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-fluid {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+  }
+
+  .container-fluid>a {
+    flex: 1 1 300px;
+    height: 400px;
+    flex-direction: column !important;
+  }
+
+  .card-img {
+    height: 250px;
+    object-position: top;
+  }
+
 }
 </style>
