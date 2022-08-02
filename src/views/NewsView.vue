@@ -102,6 +102,7 @@ export default {
 
   .container-fluid>a {
     flex: 1 1 300px;
+    max-width: 400px;
     height: 400px;
     flex-direction: column !important;
   }
