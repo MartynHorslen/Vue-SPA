@@ -20,19 +20,17 @@ const router = createRouter({
     {
       path: "/fixtures",
       name: "Fixtures",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/FixturesView.vue"),
     },
     {
       path: "/results",
       name: "Results",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/ResultsView.vue"),
     },
+    {
+      path: "/:catchAll(.*)", // Unrecognized path automatically returns home/news page.
+      component: NewsView
+    }
   ],
   linkActiveClass: "nav-active",
   linkExactActiveClass: ""
