@@ -113,4 +113,10 @@ export default {
   }
 
 }
+
+@media (min-width: 1580px) {
+  .container-fluid>a {
+    flex: 1 1 375px;
+  }
+}
 </style>
